@@ -1,6 +1,10 @@
 <main class="gacha-app">
   <%# ① TOP画面 %>
   <section id="top-screen" class="screen top-screen" data-screen="top">
+    <%= image_tag "donut-shelf.png",
+                  class: "screen-background",
+                  alt: "" %>
+
     <h1>ドーナツガチャ</h1>
 
     <p class="subtitle">
@@ -45,6 +49,14 @@
     </p>
 
     <div class="donut-choice-area">
+      <%= image_tag "donut-choice.png",
+                    id: "donut-choice-image",
+                    class: "donut-choice-image",
+                    alt: "ドーナツをトングで選んでいる様子",
+                    data: {
+                      open_image: image_path("donut-choice.png"),
+                      closed_image: image_path("donut-choice2.png")
+                    } %>
       <p>抽選中...</p>
     </div>
   </section>
@@ -54,6 +66,10 @@
            class="screen result-screen"
            data-screen="result"
            hidden>
+    <%= image_tag "donut-result.png",
+                  class: "screen-background",
+                  alt: "" %>
+
     <h2>🎉 ガチャ結果 🎉</h2>
 
     <p class="result-message">
