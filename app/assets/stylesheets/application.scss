@@ -1,1 +1,391 @@
 /* Application styles will be added in PR #3. */
+
+/* ========================================
+   共通設定
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family:
+    "Noto Sans JP",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+  color: #563a2b;
+  background-color: #fff8ed;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ========================================
+   画面共通
+======================================== */
+
+.gacha-app {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 40px 20px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.screen > :not(.screen-background) {
+  position: relative;
+  z-index: 1;
+}
+
+.screen-background {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ========================================
+   TOP画面
+======================================== */
+
+.top-screen {
+  gap: 20px;
+}
+
+.top-screen::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgba(255, 248, 235, 0.48);
+  content: "";
+}
+
+.top-screen h1 {
+  margin: 0;
+  color: #713e25;
+  font-size: unquote("clamp(2rem, 6vw, 3.5rem)");
+  font-weight: 800;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.9);
+}
+
+.subtitle {
+  margin: 0;
+  padding: 10px 18px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.88);
+  font-size: unquote("clamp(0.9rem, 2.5vw, 1.1rem)");
+  font-weight: 600;
+}
+
+#gacha-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: unquote("min(100%, 380px)");
+  margin-top: 12px;
+  padding: 28px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(83, 48, 29, 0.2);
+}
+
+.quantity-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  font-weight: 700;
+}
+
+.quantity-dropdown {
+  width: 100%;
+  min-height: 52px;
+  padding: 10px 16px;
+  border: 2px solid #c99b70;
+  border-radius: 12px;
+  background: #fffaf3;
+  color: #563a2b;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.gacha-button-container {
+  width: 100%;
+}
+
+#gacha-button,
+.retry-button {
+  width: 100%;
+  min-height: 56px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 999px;
+  background: #a9572b;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  box-shadow: 0 5px 0 #713d25;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+}
+
+#gacha-button:hover,
+.retry-button:hover {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #713d25;
+}
+
+#gacha-button:active,
+.retry-button:active {
+  transform: translateY(5px);
+  box-shadow: none;
+}
+
+#gacha-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.title-screen-footer {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.title-screen-footer p {
+  margin: 2px 0;
+}
+
+/* ========================================
+   抽選中画面
+======================================== */
+
+.loading-screen {
+  gap: 22px;
+  background: #fff5e6;
+}
+
+.loading-screen h2,
+.result-screen h2 {
+  margin: 0;
+  color: #713e25;
+  font-size: unquote("clamp(1.6rem, 5vw, 2.4rem)");
+}
+
+.loading-message {
+  margin: 0;
+  font-size: unquote("clamp(1rem, 3vw, 1.25rem)");
+  font-weight: 700;
+}
+
+.donut-choice-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.donut-choice-image {
+  display: block;
+  width: unquote("min(82vw, 560px)");
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.donut-choice-area p {
+  margin: 0;
+  color: #a9572b;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+/* ========================================
+   結果画面
+======================================== */
+
+.result-screen {
+  justify-content: flex-start;
+  gap: 18px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.result-screen::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background: rgba(255, 250, 245, 0.42);
+  content: "";
+}
+
+.result-screen h2 {
+  padding: 12px 24px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.result-message {
+  margin: 0;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+}
+
+.result-list-container {
+  width: unquote("min(100%, 760px)");
+}
+
+.result-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.result-card {
+  min-width: 0;
+  padding: 18px 12px;
+  border: 2px solid #e8c8a5;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 4px 12px rgba(83, 48, 29, 0.13);
+}
+
+.result-card-content h3 {
+  margin: 0 0 8px;
+  color: #713e25;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.result-card-content p {
+  margin: 6px 0 0;
+}
+
+.result-card-group {
+  color: #986a4b;
+  font-size: 0.85rem;
+}
+
+.result-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: unquote("min(100%, 380px)");
+}
+
+.price-notice {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.retry-button {
+  width: 100%;
+}
+
+/* ========================================
+   スマートフォン対応
+======================================== */
+
+@media (max-width: 600px) {
+  .screen {
+    padding: 28px 16px;
+  }
+
+  .top-screen {
+    gap: 16px;
+  }
+
+  #gacha-form {
+    gap: 20px;
+    padding: 22px 18px;
+  }
+
+  .title-screen-footer {
+    font-size: 0.68rem;
+  }
+
+  .loading-screen {
+    gap: 18px;
+  }
+
+  .donut-choice-image {
+    width: unquote("min(90vw, 460px)");
+  }
+
+  .result-screen {
+    gap: 14px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .result-list {
+    gap: 10px;
+  }
+
+  .result-card {
+    padding: 14px 8px;
+  }
+
+  .result-card-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .result-card-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .result-list {
+    grid-template-columns: 1fr;
+  }
+}
