@@ -1,0 +1,97 @@
+<main class="gacha-app">
+  <%# ① TOP画面 %>
+  <section id="top-screen" class="screen top-screen" data-screen="top">
+    <h1>ドーナツガチャ</h1>
+
+    <p class="subtitle">
+      ドーナツ・パイ・マフィンも含まれます
+    </p>
+
+    <%= form_with url: gacha_donuts_path,
+                  method: :post,
+                  id: "gacha-form",
+                  data: { turbo: false } do %>
+      <div class="quantity-selector">
+        <%= label_tag :quantity, "個数選択" %>
+
+        <%= select_tag :quantity,
+                       options_for_select(1..10, 1),
+                       id: "gacha-quantity",
+                       class: "quantity-dropdown" %>
+      </div>
+
+      <div class="gacha-button-container">
+        <%= button_tag "レッツガチャ",
+                       type: "submit",
+                       id: "gacha-button" %>
+      </div>
+    <% end %>
+
+    <div class="title-screen-footer">
+      <p>※このアプリはミスタードーナツとは関係ありません。</p>
+      <p>※店舗により取扱商品が異なる場合がございます。</p>
+    </div>
+  </section>
+
+  <%# ② 抽選中画面 %>
+  <section id="loading-screen"
+           class="screen loading-screen"
+           data-screen="loading"
+           hidden>
+    <h2>ドーナツを選んでいます！</h2>
+
+    <p class="loading-message" role="status" aria-live="polite">
+      どのドーナツが当たるかな？
+    </p>
+
+    <div class="donut-choice-area">
+      <p>抽選中...</p>
+    </div>
+  </section>
+
+  <%# ③ 結果画面 %>
+  <section id="result-screen"
+           class="screen result-screen"
+           data-screen="result"
+           hidden>
+    <h2>🎉 ガチャ結果 🎉</h2>
+
+    <p class="result-message">
+      あなたが引いたドーナツはこちら！
+    </p>
+
+    <div class="result-list-container">
+      <ul id="gacha-results"
+          class="result-list"
+          aria-live="polite"
+          aria-label="ガチャの抽選結果">
+      </ul>
+    </div>
+
+    <%# JavaScriptで結果カードを複製するためのテンプレート %>
+    <template id="donut-result-template">
+      <li class="result-card">
+        <div class="result-card-content">
+          <h3 data-result-name></h3>
+          <p class="result-card-group" data-result-group></p>
+
+          <p>
+            <span data-result-price></span>円（税込）
+          </p>
+        </div>
+      </li>
+    </template>
+
+    <div class="result-footer">
+      <p class="price-notice">
+        ※価格は税込価格です。店舗により取扱商品が異なる場合がございます。
+      </p>
+
+      <button type="button"
+              id="retry-button"
+              class="retry-button">
+        もう一度引く
+      </button>
+    </div>
+  </section>
+</main>
