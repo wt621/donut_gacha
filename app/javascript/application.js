@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultList = document.getElementById("gacha-results");
   const resultTemplate = document.getElementById("donut-result-template");
 
+  const closedImagePreloader = new Image();
+  closedImagePreloader.src = loadingImage.dataset.closedImage;
+
+  const closedImageReady = closedImagePreloader.decode().catch(() => {});
+
   if (
     !form ||
     !gachaButton ||
@@ -69,6 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (gachaButton.disabled) return;
 
     gachaButton.disabled = true;
+
+    await closedImageReady;
 
     const animationStartedAt = Date.now();
     const openImage = loadingImage.dataset.openImage;
