@@ -198,45 +198,10 @@ button {
    抽選中画面
 ======================================== */
 
-.loading-screen {
-  gap: 22px;
-  background: #fff5e6;
-}
-
-.loading-screen h2,
 .result-screen h2 {
   margin: 0;
   color: #713e25;
   font-size: unquote("clamp(1.6rem, 5vw, 2.4rem)");
-}
-
-.loading-message {
-  margin: 0;
-  font-size: unquote("clamp(1rem, 3vw, 1.25rem)");
-  font-weight: 700;
-}
-
-.donut-choice-area {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
-
-.donut-choice-image {
-  display: block;
-  width: unquote("min(82vw, 560px)");
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-}
-
-.donut-choice-area p {
-  margin: 0;
-  color: #a9572b;
-  font-size: 1.1rem;
-  font-weight: 800;
 }
 
 /* ========================================
@@ -394,14 +359,6 @@ button {
 
   .title-screen-footer {
     font-size: 0.68rem;
-  }
-
-  .loading-screen {
-    gap: 18px;
-  }
-
-  .donut-choice-image {
-    width: unquote("min(90vw, 460px)");
   }
 
   .result-screen {
