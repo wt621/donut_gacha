@@ -42,23 +42,14 @@
            class="screen loading-screen"
            data-screen="loading"
            hidden>
-    <h2>ドーナツを選んでいます！</h2>
-
-    <p class="loading-message" role="status" aria-live="polite">
-      どのドーナツが当たるかな？
-    </p>
-
-    <div class="donut-choice-area">
-      <%= image_tag "donut-choice.png",
-                    id: "donut-choice-image",
-                    class: "donut-choice-image",
-                    alt: "ドーナツをトングで選んでいる様子",
-                    data: {
-                      open_image: image_path("donut-choice.png"),
-                      closed_image: image_path("donut-choice2.png")
-                    } %>
-      <p>抽選中...</p>
-    </div>
+    <%= image_tag "donut-choice.png",
+                  id: "donut-choice-image",
+                  class: "screen-background",
+                  alt: "ドーナツをトングで選んでいる様子",
+                  data: {
+                    open_image: image_path("donut-choice.png"),
+                    closed_image: image_path("donut-choice2.png")
+                  } %>
   </section>
 
   <%# ③ 結果画面 %>

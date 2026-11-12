@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadingScreen = document.getElementById("loading-screen");
   const resultScreen = document.getElementById("result-screen");
 
-  const loadingMessage = document.querySelector(".loading-message");
   const loadingImage = document.getElementById("donut-choice-image");
   const resultList = document.getElementById("gacha-results");
   const resultTemplate = document.getElementById("donut-result-template");
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     !topScreen ||
     !loadingScreen ||
     !resultScreen ||
-    !loadingMessage ||
     !loadingImage ||
     !resultList ||
     !resultTemplate
@@ -76,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const openImage = loadingImage.dataset.openImage;
     const closedImage = loadingImage.dataset.closedImage;
 
-    loadingMessage.textContent = "どのドーナツが当たるかな？";
     resultList.replaceChildren();
     showScreen(loadingScreen);
 
