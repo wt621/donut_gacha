@@ -10,7 +10,7 @@ class DonutsController < ApplicationController
                     status: :bad_request
     end
 
-    all_donuts = Donut.all.to_a
+    all_donuts = Donut.all
 
     if all_donuts.empty?
       return render json: { error: "抽選できるドーナツがありません。" },
