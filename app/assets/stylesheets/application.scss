@@ -294,6 +294,49 @@ button {
   box-shadow: 0 4px 12px rgba(83, 48, 29, 0.13);
 }
 
+/* グループ別の結果カード背景色 */
+.result-card--pie {
+  background: #FFE0C2;
+}
+
+.result-card--pon-de {
+  background: #FFF2B8;
+}
+
+.result-card--old-fashion {
+  background: #EAD5BD;
+}
+
+.result-card--french {
+  background: #FFFDF8;
+}
+
+.result-card--yeast {
+  background: #F9D5DE;
+}
+
+.result-card--chocolate {
+  background: #6B422E;
+}
+
+.result-card--variety {
+  background: #FCE4EC;
+}
+
+.result-card--muffin {
+  background: #F4B36A;
+}
+
+.result-card--allergy-free {
+  background: #DDECCF;
+}
+
+/* 濃い茶色のカードは文字を白くして読みやすくする */
+.result-card--chocolate .result-card-content h3,
+.result-card--chocolate .result-card-content p {
+  color: #FFF8F0;
+}
+
 .result-card-content h3 {
   margin: 0 0 8px;
   color: #713e25;

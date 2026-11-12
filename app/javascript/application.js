@@ -33,11 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const groupClassNames = {
+    pie: "result-card--pie",
+    "pon-de": "result-card--pon-de",
+    "old-fashion": "result-card--old-fashion",
+    french: "result-card--french",
+    yeast: "result-card--yeast",
+    chocolate: "result-card--chocolate",
+    variety: "result-card--variety",
+    muffin: "result-card--muffin",
+    "allergy-free": "result-card--allergy-free",
+  };
+
   const displayResults = (donuts) => {
     resultList.replaceChildren();
 
     donuts.forEach((donut) => {
       const fragment = resultTemplate.content.cloneNode(true);
+      const resultCard = fragment.querySelector(".result-card");
+
+      resultCard.classList.add(
+        groupClassNames[donut.group_name] || "result-card--default"
+      );
 
       fragment.querySelector("[data-result-name]").textContent = donut.name;
       fragment.querySelector("[data-result-group]").textContent =
